@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration Form</title>
+<style>
+    *{box-sizing: border-box;}
+    .header
+    {
+        background-color:#5DADE2;
+        position:relative;
+        top:5%;
+        height:10%;
+        width:100%;
+    }
+    h3{
+        color:white;
+        font-size:20px;
+        text-align:center;
+        position:relative;
+        top:25%;
+    }
+    .form-style-3{
+            max-width: 500px;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        }
+        .form-style-3 label{
+            display:block;
+            margin-bottom: 10px;
+        }
+	.form-style-3 label > span{
+		float: left;
+		width: 100px;
+		color: sky-blue;
+		font-weight: bold;
+		font-size: 13px;
+		text-shadow: 1px 1px 1px #fff;
+	}
+	.form-style-3 fieldset{
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		margin: 0px 0px 10px 0px;
+		border: 1px solid #0B0101;
+		padding: 20px;
+		background: grey;
+		box-shadow: inset 0px 0px 15px #FFE5E5;
+		-moz-box-shadow: inset 0px 0px 15px #FFE5E5;
+		-webkit-box-shadow: inset 0px 0px 15px #FFE5E5;
+	}
+	.form-style-3 fieldset legend{
+		color: #FFFFFF;
+		border-top: 2px solid #6833FF;
+		border-left: 2px solid #6833FF;
+		border-right: 2px solid #6833FF;
+		border-radius: 5px 5px 0px 0px;
+		-webkit-border-radius: 5px 5px 0px 0px;
+		-moz-border-radius: 5px 5px 0px 0px;
+		background: #000000;
+		padding: 0px 8px 3px 8px;
+		box-shadow: -0px -1px 2px #F1F1F1;
+		-moz-box-shadow:-0px -1px 2px #F1F1F1;
+		-webkit-box-shadow:-0px -1px 2px #F1F1F1;
+		font-weight: normal;
+		font-size: 12px;
+	}
+	.form-style-3 textarea{
+		width:250px;
+		height:100px;
+	}
+	.form-style-3 input[type=text],
+	.form-style-3 input[type=password],
+	.form-style-3 input[type=email]{
+		border-radius: 3px;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border: 1px solid #FFC2DC;
+		outline: none;
+		color: black;
+		padding: 5px 8px 5px 8px;
+		box-shadow: inset 1px 1px 4px #FFD5E7;
+		-moz-box-shadow: inset 1px 1px 4px #FFD5E7;
+		-webkit-box-shadow: inset 1px 1px 4px #FFD5E7;
+		background: white;
+		width:50%;
+	}
+	.form-style-3  input[type=submit],
+	.form-style-3  input[type=button]{
+		background: skyblue;
+		border: 1px solid #C94A81;
+		padding: 5px 15px 5px 15px;
+		color: black;
+		box-shadow: inset -1px -1px 3px #FF62A7;
+		-moz-box-shadow: inset -1px -1px 3px #FF62A7;
+		-webkit-box-shadow: inset -1px -1px 3px #FF62A7;
+		border-radius: 3px;
+		border-radius: 3px;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;	
+		font-weight: bold;
+	}
+	.required{
+		color:red;
+		font-weight:normal;
+	}
+</style>
+</head>
+<body>
+<script>  
+	function validateform()
+	{  
+        var name1=document.register_form.field1.value;  
+        var name2=document.register_form.field2.value;
+        var pattern = /^[A-Za-z]*$/;
+        if(!pattern.test(name1) || !pattern.test(name2))
+        {
+        alert("Please enter valid Name");
+        return false;
+        }
+        else if (name1==""|| name2=="")
+        {  
+          alert("Please fill Name field");  
+          return false;  
+        } 
+        var phn=document.register_form.field3.value;
+        if(phn=="")
+        {
+            alert("Please fill Phone number field");
+            return false; 
+        } 
+        else if(isNaN(phn)||phn.length!=10)
+        {  
+          alert("Please enter valid Phone number");  
+          return false;  
+        }
+        var em=document.register_form.field4.value;
+        if (em=="")
+        {  
+          alert("Please fill Email field");  
+          return false;  
+        } 
+        var pass1=document.register_form.field5.value;
+        var pass2=document.register_form.field6.value;
+        var passcheck = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+        if (pass1=="")
+        {  
+          alert("Please fill Password field");  
+          return false;  
+        }
+        else if(!passcheck.test(pass1))
+        {	
+           alert("Password should be between 6-20 letters with atleast one uppercase, one lowercase letter and one numeric digit");
+           return false;
+        }
+        else if (pass2=="" || pass1!=pass2)
+        {  
+          alert("Passwords didn't match");  
+          return false;  
+        } 
+	}  
+	</script> 
+	<div class="form-style-3" style="max-width:500px;margin:auto;">
+	<div class="header">
+		<h3><center>Sign Up</center></h3>
+	</div></br>
+	<form name="register_form" method="post" action="home.html"onsubmit="return validateform()" >
+        <label><span>First Name<span class="required">*</span></span><input type="text" class="input-field" name="field1" Placeholder="First name" /></label>
+        <label ><span>Last Name<span class="required">*</span></span><input type="text" class="input-field" name="field2" Placeholder="Last name" /></label>
+        <label><span>Phone Number<span class="required">*</span></span><input type="text" class="input-field" name="field3" Placeholder="Mobile number" /></label>
+        </br>
+        <label><span>Email Address<span class="required">*</span></span><input type="email" class="input-field" name="field4" Placeholder="mail@example.com" /></label>
+        <label><span>Password<span class="required">*</span></span><input type="password" class="input-field" name="field5" Placeholder="password" /></label>
+        <label><span>Confirm Password<span class="required">*</span></span><input type="password" class="input-field" name="field6" Placeholder="re-type password" /></label>
+        </br>
+        <label><center><span> </span><input type="submit" value="Register" /></center></label>
+	</form>
+</div>
+</body>
+</html>
